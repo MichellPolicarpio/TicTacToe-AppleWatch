@@ -58,9 +58,9 @@ git clone https://github.com/TuUsuario/AppleWatch-TicTacToe.git
 ## 📸 Capturas de pantalla
 
 <p align="center">
-  <img src="/api/placeholder/180/180" alt="Pantalla de menú" />
-  <img src="/api/placeholder/180/180" alt="Partida en curso" />
-  <img src="/api/placeholder/180/180" alt="Pantalla de victoria" />
+  <img src="Screenshots/menu.png" alt="Pantalla de menú" width="180"/>
+  <img src="Screenshots/partida.png" alt="Partida en curso" width="180"/>
+  <img src="Screenshots/victoria.png" alt="Pantalla de victoria" width="180"/>
 </p>
 
 ## 👨‍💻 Autor
