@@ -70,21 +70,3 @@ Michell Alexis Policarpio Moran - Ingeniero Informático de Veracruz, México
 ## 📄 Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
-
-## 🔜 Próximas funcionalidades
-
-- [ ] Modo de un solo jugador con IA
-- [ ] Estadísticas de juego
-- [ ] Temas personalizables
-- [ ] Soporte para más idiomas
-- [ ] Complicación para la esfera del Apple Watch
-
-## 🤝 Contribuir
-
-Las contribuciones son bienvenidas. Por favor, siéntete libre de hacer un fork del repositorio y enviar pull requests.
-
-1. Haz un fork del proyecto
-2. Crea tu rama de funcionalidades (`git checkout -b feature/AmazingFeature`)
-3. Haz commit de tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Sube la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
