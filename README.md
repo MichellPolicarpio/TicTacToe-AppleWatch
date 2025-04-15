@@ -11,7 +11,7 @@
 
 ## 📱 Descripción
 
-**AppleWatch-TicTacToe** es un juego clásico de Tic Tac Toe (Tres en raya) diseñado específicamente para Apple Watch. Disfruta de partidas rápidas y divertidas directamente desde tu muñeca, con una interfaz optimizada para pantallas pequeñas y controles táctiles precisos.
+**AppleWatch-TicTacToe** es un juego clásico de Tic Tac Toe (Tres en raya) diseñado específicamente para Apple Watch. La aplicación cuenta con una interfaz optimizada para pantallas pequeñas y controles táctiles precisos.
 
 ## ✨ Características
 
