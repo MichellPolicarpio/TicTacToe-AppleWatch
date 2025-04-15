@@ -5,8 +5,9 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 <p align="center">
-  <img src="/api/placeholder/400/250" alt="Tic Tac Toe para Apple Watch" />
+  <img src="Screenshots/partida.png" alt="Tic Tac Toe par Apple Watch" width="180"/>
 </p>
+
 
 ## 📱 Descripción
 
