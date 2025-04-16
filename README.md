@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 <p align="center">
-  <img src="Screenshots/partida.png" alt="Tic Tac Toe para Apple Watch" width="180"/>
+  <img src="Screenshots/intro-screen.png" alt="Pantalla de introducción" width="180"/>
 </p>
 
 ## 📱 Descripción
@@ -56,9 +56,7 @@ git clone https://github.com/TuUsuario/AppleWatch-TicTacToe.git
 - **Modo Difícil**: La IA utiliza una estrategia avanzada, priorizando movimientos para ganar o bloquear al oponente
 
 ## 📸 Capturas de pantalla
-## 📸 Capturas de pantalla
 <p align="center">
-  <img src="Screenshots/intro-screen.png" alt="Pantalla de introducción" width="180"/>
   <img src="Screenshots/main-menu.png" alt="Menú principal" width="180"/>
   <img src="Screenshots/difficulty-selection.png" alt="Selección de dificultad" width="180"/>
 </p>
