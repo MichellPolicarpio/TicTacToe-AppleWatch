@@ -94,7 +94,7 @@ struct IntroView: View {
         )
         .onAppear {
             // Programar la transición a la siguiente vista después de 1.5 segundos
-            DispatchQueue.main.asyncAfter(deadline: .now() + 10.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 onComplete()
             }
         }
@@ -513,11 +513,14 @@ struct GameView: View {
                                     .font(.system(size: 18, weight: .semibold))
                                     .foregroundColor(winner == "X" ? .blue : .red)
                             }
+                            
+                            Spacer() // Empuja el texto hacia la izquierda
                         }
                         .padding(.vertical, 1)
+                        .padding(.leading, 12) // Aumentado el padding izquierdo para evitar que la curva del Apple Watch tape las letras
                         
                         // Pequeño espacio entre el turno y el tablero
-                        Spacer().frame(height: 6)
+                        Spacer().frame(height: 8)
                         
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 4), count: 3), spacing: 4) {
                             ForEach(0..<9) { index in
