@@ -94,7 +94,7 @@ struct IntroView: View {
         )
         .onAppear {
             // Programar la transición a la siguiente vista después de 1.5 segundos
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10.5) {
                 onComplete()
             }
         }
