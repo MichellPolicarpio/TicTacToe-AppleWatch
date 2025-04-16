@@ -67,6 +67,9 @@ El juego ofrece tres niveles de desafío cuando juegas contra la computadora:
 
 ## 🔍 Estructura del proyecto (MVVM)
 
+El proyecto sigue una arquitectura MVVM (Model-View-ViewModel) para separar la lógica de negocio de la interfaz de usuario. Los modelos gestionan los datos y reglas del juego, las vistas se encargan de la presentación y las interacciones del usuario, mientras que los ViewModels conectan ambas capas facilitando la comunicación. Esta estructura mejora la mantenibilidad y permite pruebas independientes de cada componente.
+La carpeta Models contiene las clases fundamentales del juego como tablero y jugadores. Las Views implementan la interfaz gráfica con elementos reutilizables en la subcarpeta Components. Los ViewModels procesan la lógica de presentación y coordinan las interacciones entre vistas y modelos. Adicionalmente, contamos con utilidades como el HapticManager para mejorar la experiencia táctil del usuario.
+
 ```
 ├── Models/
 │   ├── GameMode.swift
