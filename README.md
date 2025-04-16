@@ -56,10 +56,16 @@ git clone https://github.com/TuUsuario/AppleWatch-TicTacToe.git
 - **Modo Difícil**: La IA utiliza una estrategia avanzada, priorizando movimientos para ganar o bloquear al oponente
 
 ## 📸 Capturas de pantalla
+## 📸 Capturas de pantalla
 <p align="center">
-  <img src="Screenshots/menu.png" alt="Pantalla de menú" width="180"/>
-  <img src="Screenshots/partida.png" alt="Partida en curso" width="180"/>
-  <img src="Screenshots/victoria.png" alt="Pantalla de victoria" width="180"/>
+  <img src="Screenshots/intro-screen.png" alt="Pantalla de introducción" width="180"/>
+  <img src="Screenshots/main-menu.png" alt="Menú principal" width="180"/>
+  <img src="Screenshots/difficulty-selection.png" alt="Selección de dificultad" width="180"/>
+</p>
+<p align="center">
+  <img src="Screenshots/gameplay.png" alt="Partida en curso" width="180"/>
+  <img src="Screenshots/winning-combination.png" alt="Combinación ganadora" width="180"/>
+  <img src="Screenshots/results-screen.png" alt="Pantalla de resultados" width="180"/>
 </p>
 
 ## 🔍 Estructura del proyecto
