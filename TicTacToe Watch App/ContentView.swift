@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import WatchKit
 
 /// Enumeración para los modos de juego
 enum GameMode {
@@ -684,6 +685,9 @@ struct GameView: View {
     private func makeMove(at index: Int) {
         // Solo permite jugar en celdas vacías
         if board[index].isEmpty && winner == nil {
+            // Genera feedback táctil al colocar una ficha
+            WKInterfaceDevice.current().play(.click)
+            
             // Coloca el símbolo del jugador actual
             board[index] = currentPlayer
             // Verifica si hay un ganador
@@ -833,6 +837,12 @@ struct GameView: View {
                 // Establece el ganador y las celdas ganadoras
                 winner = board[combo[0]]
                 winningIndices = combo
+                
+                // Vibración intensa para indicar victoria
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    WKInterfaceDevice.current().play(.success)
+                }
+                
                 return
             }
         }
@@ -841,6 +851,11 @@ struct GameView: View {
         if !board.contains("") {
             winner = "Empate"
             winningIndices = []
+            
+            // Vibración para indicar empate
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                WKInterfaceDevice.current().play(.notification)
+            }
         }
     }
     
