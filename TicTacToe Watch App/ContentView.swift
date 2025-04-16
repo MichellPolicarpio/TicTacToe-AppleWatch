@@ -516,6 +516,9 @@ struct GameView: View {
                         }
                         .padding(.vertical, 1)
                         
+                        // Pequeño espacio entre el turno y el tablero
+                        Spacer().frame(height: 6)
+                        
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 4), count: 3), spacing: 4) {
                             ForEach(0..<9) { index in
                                 // Botón para cada celda del tablero
