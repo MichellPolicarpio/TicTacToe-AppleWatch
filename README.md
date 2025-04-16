@@ -1,4 +1,5 @@
 # 🎮 AppleWatch-TicTacToe
+
 [![Swift Version](https://img.shields.io/badge/Swift-5.9-orange.svg)](https://swift.org/)
 [![Platform](https://img.shields.io/badge/Platform-watchOS-blue.svg)](https://www.apple.com/watchos/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -8,54 +9,52 @@
 </p>
 
 ## 📱 Descripción
+
 **AppleWatch-TicTacToe** es un juego clásico de Tic Tac Toe (Tres en raya) diseñado específicamente para Apple Watch. La aplicación cuenta con una interfaz optimizada para pantallas pequeñas y controles táctiles precisos, ofreciendo diferentes modos de juego y niveles de dificultad.
 
 ## ✨ Características
-- 🤖 Tres niveles de dificultad contra la IA: Fácil, Medio y Difícil
+
+- 🎮 Juego contra la computadora con tres niveles de desafío
 - 👥 Modo multijugador para jugar con un amigo
-- 🎲 Juego clásico de Tic Tac Toe con interfaz intuitiva
-- ⌚ Diseñado específicamente para Apple Watch
+- 🎲 Experiencia clásica de Tic Tac Toe con interfaz intuitiva
+- ⌚ Diseño optimizado para Apple Watch
 - 🎯 Interfaz minimalista y fácil de usar
 - 🔄 Sistema de turnos alternados entre X y O
-- 🏆 Detección automática de ganador
+- 🏆 Detección automática de victoria
 - 🎨 Resaltado visual de la combinación ganadora
 - 🌈 Interfaz con gradientes y animaciones atractivas
 - 🌐 Disponible en español
 
 ## 🛠️ Tecnologías utilizadas
-- SwiftUI
-- WatchKit
-- watchOS
-- Combine
 
-## 📋 Requisitos
-- watchOS 10.0+
-- Xcode 15.0+
-- Swift 5.9+
+SwiftUI, WatchKit, watchOS, Combine
+
+## 📋 Dispositivos compatibles
+
+El juego es compatible con:
+- Apple Watch Series 4 y superiores
+- Apple Watch SE (1ª y 2ª generación)
+- Apple Watch Ultra
+- watchOS 10.0 o superior
 
 ## 🚀 Instalación
-1. Clona este repositorio:
-```bash
-git clone https://github.com/TuUsuario/AppleWatch-TicTacToe.git
-```
-2. Abre `TicTacToe.xcodeproj` en Xcode
-3. Selecciona tu dispositivo Apple Watch o simulador como destino
-4. Ejecuta la aplicación (⌘+R)
+
+Clona este repositorio, abre `TicTacToe.xcodeproj` en Xcode 15.0+, selecciona tu Apple Watch o simulador como destino y ejecuta la aplicación con ⌘+R.
 
 ## 🎮 Cómo jugar
-1. Abre la aplicación en tu Apple Watch
-2. Elige entre jugar contra la IA o en modo multijugador
-3. Si eliges jugar contra la IA, selecciona el nivel de dificultad
-4. Los jugadores se turnan para colocar su símbolo (X u O) en la cuadrícula
-5. El primer jugador en alinear tres símbolos iguales (horizontal, vertical o diagonal) gana
-6. Si la cuadrícula se llena sin un ganador, el juego termina en empate
 
-## 🤖 Inteligencia Artificial
-- **Modo Fácil**: La IA realiza movimientos aleatorios
-- **Modo Medio**: La IA combina estrategia y aleatoriedad (60% estratégico, 40% aleatorio)
-- **Modo Difícil**: La IA utiliza una estrategia avanzada, priorizando movimientos para ganar o bloquear al oponente
+Abre la aplicación en tu Apple Watch y elige el modo de juego. Los jugadores se turnan para colocar su símbolo (X u O) en la cuadrícula. Gana el primero en alinear tres símbolos iguales horizontal, vertical o diagonalmente. Si la cuadrícula se llena sin un ganador, el juego termina en empate.
+
+## 🎯 Niveles de desafío
+
+El juego ofrece tres niveles de desafío cuando juegas contra la computadora:
+
+- **Principiante**: La computadora realiza movimientos aleatorios
+- **Intermedio**: Combina estrategia básica con algunos movimientos aleatorios
+- **Avanzado**: Utiliza estrategia completa, analizando el tablero para realizar los mejores movimientos
 
 ## 📸 Capturas de pantalla
+
 <p align="center">
   <img src="Screenshots/main-menu.png" alt="Menú principal" width="180"/>
   <img src="Screenshots/difficulty-selection.png" alt="Selección de dificultad" width="180"/>
@@ -66,15 +65,42 @@ git clone https://github.com/TuUsuario/AppleWatch-TicTacToe.git
   <img src="Screenshots/results-screen.png" alt="Pantalla de resultados" width="180"/>
 </p>
 
-## 🔍 Estructura del proyecto
-- **ContentView**: Controlador de vista principal que maneja la navegación
-- **IntroView**: Pantalla de inicio animada
-- **MenuView**: Menú de selección de modo de juego
-- **GameView**: Implementación principal del juego
-- **GameMode**: Enumeración que define los modos de juego disponibles
+## 🔍 Estructura del proyecto (MVVM)
+
+```
+├── Models/
+│   ├── GameMode.swift
+│   ├── Game.swift
+│   ├── Player.swift
+│   ├── Board.swift
+│   └── GameBoard.swift
+│
+├── Views/
+│   ├── MenuView.swift
+│   ├── GameView.swift
+│   ├── IntroView.swift
+│   └── Components/
+│       ├── GameResultView.swift
+│       └── GameBoardView.swift
+│
+├── ViewModels/
+│   ├── MenuViewModel.swift
+│   ├── GameViewModel.swift
+│   └── AIPlayerViewModel.swift
+│
+├── Utilities/
+│   └── HapticManager.swift
+│
+├── Assets.xcassets/
+├── .vscode/
+├── ContentView.swift
+└── TicTacToeApp.swift
+```
 
 ## 👨‍💻 Autor
+
 Michell Alexis Policarpio Moran - Ingeniero Informático de Veracruz, México
 
 ## 📄 Licencia
+
 Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
