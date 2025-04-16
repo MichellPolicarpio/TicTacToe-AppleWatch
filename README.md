@@ -32,7 +32,7 @@ SwiftUI, WatchKit, watchOS, Combine
 ## 📋 Dispositivos compatibles
 
 El juego es compatible con:
-- Apple Watch Series 4 y superiores
+- Apple Watch Series 4, 5, 6, 7, 8, 9 y 10
 - Apple Watch SE (1ª y 2ª generación)
 - Apple Watch Ultra
 - watchOS 10.0 o superior
