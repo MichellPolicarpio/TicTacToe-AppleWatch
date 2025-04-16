@@ -520,7 +520,7 @@ struct GameView: View {
                         .padding(.leading, 12) // Aumentado el padding izquierdo para evitar que la curva del Apple Watch tape las letras
                         
                         // Pequeño espacio entre el turno y el tablero
-                        Spacer().frame(height: 8)
+                        Spacer().frame(height: 10)
                         
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 4), count: 3), spacing: 4) {
                             ForEach(0..<9) { index in
