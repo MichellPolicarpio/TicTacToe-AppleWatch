@@ -84,7 +84,7 @@ struct GameView: View {
             Spacer()
         }
         .padding(.horizontal, 8)
-        .padding(.top, 11) // Pequeño margen superior de 11 puntos
+        .padding(.top, 14) // Pequeño margen superior de 14 puntos
         .padding(.bottom, 0)
     }
     
@@ -220,5 +220,6 @@ struct GameView: View {
             .buttonStyle(BorderedButtonStyle(tint: .gray))
         }
         .padding(.horizontal, 5)
+        .padding(.top, 29) // Añadir margen superior para separar de la puntuación
     }
 } 

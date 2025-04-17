@@ -263,6 +263,18 @@ struct MenuView: View {
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(.blue)
                 
+                Text("Veracruz, México")
+                    .font(.system(size: 15))
+                    .padding(.top, 2)
+                
+                Text("GitHub: MichellPolicarpio")
+                    .font(.system(size: 15))
+                    .padding(.top, 2)
+                
+                Text("Versión 1.3")
+                    .font(.system(size: 15, weight: .medium))
+                    .padding(.top, 5)
+                
                 Text("© 2025")
                     .font(.system(size: 14))
                     .padding(.top, 5)
