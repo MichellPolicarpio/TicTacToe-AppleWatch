@@ -36,6 +36,9 @@ class GameViewModel: ObservableObject {
     /// Jugador ganador (si existe)
     @Published private(set) var winner: Player?
     
+    /// Línea ganadora (posiciones row, col)
+    @Published private(set) var winningLine: [(Int, Int)]?
+    
     /// Puntuación del jugador X
     @Published private(set) var scoreX: Int = 0
     
@@ -74,7 +77,7 @@ class GameViewModel: ObservableObject {
         guard !gameOver && !isAIThinking else { return }
         
         // Si es un juego contra la IA, solo permitir movimientos del jugador humano
-        if gameMode != .twoPlayer && currentPlayer != startingPlayer {
+        if gameMode.isAIMode && currentPlayer == getAIPlayer() {
             return
         }
         
@@ -102,8 +105,10 @@ class GameViewModel: ObservableObject {
     
     /// Comprueba si el juego ha terminado (victoria o empate)
     private func checkGameStatus() {
-        if let winner = game.checkWinner() {
+        let result = game.checkWinner()
+        if let winner = result.winner {
             self.winner = winner
+            self.winningLine = result.winningLine
             self.gameOver = true
             
             // Actualizar puntuación
@@ -116,6 +121,7 @@ class GameViewModel: ObservableObject {
             // Empate
             self.gameOver = true
             self.winner = nil
+            self.winningLine = nil
         }
     }
     
@@ -133,6 +139,7 @@ class GameViewModel: ObservableObject {
         currentPlayer = startingPlayer
         gameOver = false
         winner = nil
+        winningLine = nil
         
         // Si el primer turno es de la IA, hacer un movimiento automático
         if shouldMakeAIMove() {
@@ -149,7 +156,22 @@ class GameViewModel: ObservableObject {
     /// Verifica si es el turno de la IA
     /// - Returns: True si es el turno de la IA
     private func shouldMakeAIMove() -> Bool {
-        return gameMode != .twoPlayer && currentPlayer != startingPlayer
+        guard gameMode.isAIMode else { return false }
+        return currentPlayer == getAIPlayer()
+    }
+    
+    /// Obtiene el jugador que representa a la IA
+    /// - Returns: Player representando a la IA (X u O)
+    private func getAIPlayer() -> Player {
+        // En modo un jugador, la IA juega como O si el usuario empieza como X
+        // O la IA juega como X si el usuario empieza como O
+        if gameMode.isAIMode {
+            // Siendo startingPlayer el jugador inicial aleatorio,
+            // si startingPlayer es X, la IA es O
+            // si startingPlayer es O, la IA es X
+            return startingPlayer == .x ? .o : .x
+        }
+        return .empty // No debería llegar aquí
     }
     
     /// Realiza un movimiento automático de la IA
@@ -264,7 +286,8 @@ class GameViewModel: ObservableObject {
     /// - Returns: Puntuación de la posición actual
     private func minimax(game: Game, depth: Int, isMaximizing: Bool, player: Player) -> Int {
         // Verificar si el juego ha terminado
-        if let winner = game.checkWinner() {
+        let result = game.checkWinner()
+        if let winner = result.winner {
             return winner == player ? 10 - depth : depth - 10
         }
         

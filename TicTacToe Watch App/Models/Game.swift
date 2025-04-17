@@ -61,7 +61,7 @@ struct Game {
     
     /// Estado actual del juego
     var state: GameState {
-        if let winner = checkWinner() {
+        if let winner = checkWinner().winner {
             return .won(winner)
         } else if isBoardFull() {
             return .draw
@@ -104,32 +104,36 @@ struct Game {
     
     /// Verifica si el juego ha terminado
     /// - Returns: El jugador ganador o nil si no hay ganador todavía
-    func checkWinner() -> Player? {
+    func checkWinner() -> (winner: Player?, winningLine: [(Int, Int)]?) {
         // Comprobar filas
         for row in 0..<Game.boardSize {
-            if let winner = checkLine(positions: (0..<Game.boardSize).map { (row, $0) }) {
-                return winner
+            let positions = (0..<Game.boardSize).map { (row, $0) }
+            if let winner = checkLine(positions: positions) {
+                return (winner, positions)
             }
         }
         
         // Comprobar columnas
         for col in 0..<Game.boardSize {
-            if let winner = checkLine(positions: (0..<Game.boardSize).map { ($0, col) }) {
-                return winner
+            let positions = (0..<Game.boardSize).map { ($0, col) }
+            if let winner = checkLine(positions: positions) {
+                return (winner, positions)
             }
         }
         
         // Comprobar diagonal principal
-        if let winner = checkLine(positions: (0..<Game.boardSize).map { ($0, $0) }) {
-            return winner
+        let diag1 = (0..<Game.boardSize).map { ($0, $0) }
+        if let winner = checkLine(positions: diag1) {
+            return (winner, diag1)
         }
         
         // Comprobar diagonal secundaria
-        if let winner = checkLine(positions: (0..<Game.boardSize).map { ($0, Game.boardSize - 1 - $0) }) {
-            return winner
+        let diag2 = (0..<Game.boardSize).map { ($0, Game.boardSize - 1 - $0) }
+        if let winner = checkLine(positions: diag2) {
+            return (winner, diag2)
         }
         
-        return nil
+        return (nil, nil)
     }
     
     /// Verifica si hay un ganador en una línea específica

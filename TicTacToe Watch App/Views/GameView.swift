@@ -38,7 +38,7 @@ struct GameView: View {
                     }
                 }
                 .padding(0)
-                .onChange(of: viewModel.gameOver) { newValue in
+                .onChange(of: viewModel.gameOver) { oldValue, newValue in
                     if newValue == true {
                         // Esperar 1.5 segundos antes de desplazar hacia abajo
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
@@ -90,7 +90,7 @@ struct GameView: View {
     
     /// Tablero de juego
     private var gameBoard: some View {
-        VStack(spacing: 5) {
+        VStack {
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), spacing: 8) {
                 ForEach(0..<3) { row in
                     ForEach(0..<3) { col in
@@ -99,7 +99,7 @@ struct GameView: View {
                             hapticManager.playHaptic(for: .selection)
                             viewModel.makeMove(row: row, col: col)
                         }) {
-                            cellView(for: viewModel.boardState[row][col])
+                            cellView(for: viewModel.boardState[row][col], isInWinningLine: isInWinningLine(row: row, col: col))
                         }
                         .buttonStyle(PlainButtonStyle())
                         .disabled(viewModel.gameOver || viewModel.isAIThinking || !viewModel.boardState[row][col].isEmpty)
@@ -135,12 +135,21 @@ struct GameView: View {
         .padding(.bottom, 5)
     }
     
+    /// Verifica si una celda está en la línea ganadora
+    private func isInWinningLine(row: Int, col: Int) -> Bool {
+        guard let winningLine = viewModel.winningLine else {
+            return false
+        }
+        
+        return winningLine.contains(where: { $0.0 == row && $0.1 == col })
+    }
+    
     /// Vista de una celda individual del tablero
-    private func cellView(for cellState: CellState) -> some View {
+    private func cellView(for cellState: CellState, isInWinningLine: Bool) -> some View {
         ZStack {
             // Fondo de la celda
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color.blue.opacity(0.15))
+                .fill(isInWinningLine ? Color.green.opacity(0.6) : Color.blue.opacity(0.15))
                 .aspectRatio(1, contentMode: .fit)
             
             // Contenido según el estado de la celda

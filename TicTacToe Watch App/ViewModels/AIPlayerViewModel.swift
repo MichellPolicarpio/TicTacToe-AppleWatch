@@ -103,7 +103,8 @@ class AIPlayerViewModel: ObservableObject {
     /// - Returns: Puntuación de la posición
     private func minimax(game: Game, depth: Int, isMaximizing: Bool) -> Int {
         // Verificar si hay un ganador
-        if let winner = game.checkWinner() {
+        let result = game.checkWinner()
+        if let winner = result.winner {
             if winner == aiPlayer {
                 return 10 - depth // La IA gana, es bueno
             } else {

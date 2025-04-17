@@ -12,29 +12,45 @@ struct MenuView: View {
     /// ViewModel para el menú
     @StateObject private var viewModel = MenuViewModel()
     
-    /// Gestiona la navegación entre pantallas
-    @State private var navigateToGame = false
-    
     /// Gestiona la presentación del selector de dificultad
     @State private var showingDifficultyPicker = false
+    
+    // Tipo de destino para la navegación
+    enum NavigationDestination: Hashable {
+        case game(GameViewModel)
+        
+        // Implementación de Hashable
+        func hash(into hasher: inout Hasher) {
+            switch self {
+            case .game(let viewModel):
+                // Usamos el puntero de memoria del ViewModel como hash
+                hasher.combine(ObjectIdentifier(viewModel))
+            }
+        }
+        
+        // Implementación de Equatable
+        static func == (lhs: NavigationDestination, rhs: NavigationDestination) -> Bool {
+            switch (lhs, rhs) {
+            case (.game(let lvm), .game(let rvm)):
+                return ObjectIdentifier(lvm) == ObjectIdentifier(rvm)
+            }
+        }
+    }
+    
+    // Estado para el destino de navegación
+    @State private var navigationPath = NavigationPath()
     
     /// Gestor de retroalimentación háptica
     private let hapticManager = HapticManager()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigationPath) {
             ScrollView {
                 VStack(spacing: 15) {
                     // Título
                     Text("TIC TAC TOE")
                         .font(.system(size: 20, weight: .bold, design: .rounded))
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [.blue, .purple],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                        .foregroundColor(.white)
                     
                     // Botón juego contra IA
                     Button {
@@ -55,7 +71,8 @@ struct MenuView: View {
                     Button {
                         hapticManager.playHaptic(for: .selection)
                         viewModel.selectedMode = .twoPlayer
-                        navigateToGame = true
+                        let gameViewModel = viewModel.createGameViewModel()
+                        navigationPath.append(NavigationDestination.game(gameViewModel))
                     } label: {
                         HStack {
                             Image(systemName: "person.2")
@@ -110,21 +127,20 @@ struct MenuView: View {
                         .layoutPriority(1)
                     }
                     .frame(maxWidth: .infinity)
-                    
-                    // Navegación a la pantalla de juego
-                    NavigationLink(destination: 
-                        GameView(
-                            viewModel: viewModel.createGameViewModel(),
-                            onBackToMenu: { navigateToGame = false }
-                        )
-                        .navigationBarBackButtonHidden(true)
-                        ,
-                        isActive: $navigateToGame) {
-                        EmptyView()
-                    }
-                    .hidden()
                 }
                 .padding()
+            }
+            .navigationDestination(for: NavigationDestination.self) { destination in
+                switch destination {
+                case .game(let gameViewModel):
+                    GameView(
+                        viewModel: gameViewModel,
+                        onBackToMenu: { 
+                            navigationPath.removeLast()
+                        }
+                    )
+                    .navigationBarBackButtonHidden(true)
+                }
             }
             .scrollIndicators(.visible)
             .background(
@@ -163,7 +179,8 @@ struct MenuView: View {
                         hapticManager.playHaptic(for: .selection)
                         viewModel.selectedMode = mode
                         showingDifficultyPicker = false
-                        navigateToGame = true
+                        let gameViewModel = viewModel.createGameViewModel()
+                        navigationPath.append(NavigationDestination.game(gameViewModel))
                     } label: {
                         HStack {
                             Image(systemName: viewModel.icon(for: mode))
@@ -246,7 +263,7 @@ struct MenuView: View {
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(.blue)
                 
-                Text("© 2023")
+                Text("© 2025")
                     .font(.system(size: 14))
                     .padding(.top, 5)
                 

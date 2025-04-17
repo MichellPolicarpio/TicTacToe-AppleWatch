@@ -65,6 +65,9 @@ class MenuViewModel: ObservableObject {
     /// Crea un nuevo ViewModel de juego con la configuración actual
     /// - Returns: GameViewModel configurado con las opciones seleccionadas
     func createGameViewModel() -> GameViewModel {
-        return GameViewModel(gameMode: selectedMode, startingPlayer: startingPlayer)
+        // Seleccionar aleatoriamente quién empieza
+        let randomStartingPlayer = Bool.random() ? Player.x : Player.o
+        
+        return GameViewModel(gameMode: selectedMode, startingPlayer: randomStartingPlayer)
     }
 } 
