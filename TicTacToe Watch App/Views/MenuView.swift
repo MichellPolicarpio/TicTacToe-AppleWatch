@@ -251,45 +251,92 @@ struct MenuView: View {
     /// Vista de "Creador"
     private var creatorView: some View {
         ScrollView {
-            VStack(alignment: .center, spacing: 15) {
-                Text("Creador")
-                    .font(.system(size: 18, weight: .bold))
-                    .padding(.bottom, 5)
+            VStack(spacing: 12) {
+                // Encabezado
+                VStack(spacing: 6) {
+                    Text("Acerca de")
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(.white)
+                    
+                    Divider()
+                        .background(Color.blue.opacity(0.6))
+                        .padding(.horizontal)
+                }
+                .padding(.bottom, 8)
                 
-                Text("Desarrollado por:")
-                    .font(.system(size: 15))
+                // Información del desarrollador
+                VStack(spacing: 8) {
+                    Label("Desarrollador", systemImage: "person.fill")
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.blue)
+                    
+                    Text("Michell Alexis Policarpio Moran")
+                        .font(.system(size: 15, weight: .medium))
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                }
+                .padding(.vertical, 8)
+                .frame(maxWidth: .infinity)
+                .background(Color.blue.opacity(0.15))
+                .cornerRadius(10)
                 
-                Text("Michell Alexis Policarpio Moran")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(.blue)
+                // Ubicación
+                VStack(spacing: 8) {
+                    Label("Ubicación", systemImage: "mappin.circle.fill")
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.green)
+                    
+                    Text("Veracruz, México")
+                        .font(.system(size: 15))
+                        .foregroundColor(.white)
+                }
+                .padding(.vertical, 8)
+                .frame(maxWidth: .infinity)
+                .background(Color.green.opacity(0.15))
+                .cornerRadius(10)
                 
-                Text("Veracruz, México")
-                    .font(.system(size: 15))
-                    .padding(.top, 2)
+                // GitHub
+                VStack(spacing: 8) {
+                    Label("GitHub", systemImage: "link.circle.fill")
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.purple)
+                    
+                    Text("MichellPolicarpio")
+                        .font(.system(size: 15))
+                        .foregroundColor(.white)
+                }
+                .padding(.vertical, 8)
+                .frame(maxWidth: .infinity)
+                .background(Color.purple.opacity(0.15))
+                .cornerRadius(10)
                 
-                Text("GitHub: MichellPolicarpio")
-                    .font(.system(size: 15))
-                    .padding(.top, 2)
-                
-                Text("Versión 1.3")
-                    .font(.system(size: 15, weight: .medium))
-                    .padding(.top, 5)
-                
-                Text("© 2025")
-                    .font(.system(size: 14))
-                    .padding(.top, 5)
+                // Versión y copyright
+                VStack(spacing: 8) {
+                    Label("Versión 1.3", systemImage: "tag.circle.fill")
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.orange)
+                    
+                    Text("© 2025")
+                        .font(.system(size: 14))
+                        .foregroundColor(.white)
+                }
+                .padding(.vertical, 8)
+                .frame(maxWidth: .infinity)
+                .background(Color.orange.opacity(0.15))
+                .cornerRadius(10)
                 
                 Spacer()
                 
+                // Botón de cerrar
                 Button("Cerrar") {
                     viewModel.showCreator = false
                 }
+                .font(.system(size: 16, weight: .semibold))
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 10)
-                .background(Color.purple)
+                .padding(.vertical, 12)
+                .background(Color.blue)
                 .foregroundColor(.white)
                 .cornerRadius(10)
-                .padding(.top, 10)
             }
             .padding()
         }

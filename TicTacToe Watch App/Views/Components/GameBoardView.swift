@@ -87,7 +87,7 @@ struct CellView: View {
                 // Símbolo del jugador
                 if let player = cellState.player {
                     Text(player.name)
-                        .font(.system(size: 24, weight: .bold))
+                        .font(.system(size: 28, weight: .heavy))
                         .foregroundColor(player.color)
                 }
             }

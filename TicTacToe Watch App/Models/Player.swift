@@ -65,9 +65,9 @@ enum Player {
     var color: Color {
         switch self {
         case .x:
-            return .blue
+            return Color(red: 0.1, green: 0.6, blue: 1.0) // Azul más intenso y vibrante
         case .o:
-            return .red
+            return Color(red: 1.0, green: 0.1, blue: 0.3) // Mantenemos el rojo brillante
         case .empty:
             return .clear
         }
