@@ -56,7 +56,7 @@ El juego ofrece tres niveles de desafío cuando juegas contra la computadora:
 ## 📸 Capturas de pantalla
 
 <p align="center">
-  <img src="Screenshots/main-menu.png" alt="Menú principal" width="180"/>
+  <img src="Screenshots/main-menu-game.png" alt="Menú principal" width="180"/>
   <img src="Screenshots/difficulty-selection.png" alt="Selección de dificultad" width="180"/>
 </p>
 <p align="center">
