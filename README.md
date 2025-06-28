@@ -62,7 +62,7 @@ El juego ofrece tres niveles de desafío cuando juegas contra la computadora:
 <p align="center">
   <img src="Screenshots/gameplay.png" alt="Partida en curso" width="180"/>
   <img src="Screenshots/winning-combination.png" alt="Combinación ganadora" width="180"/>
-  <img src="Screenshots/results-screen.png" alt="Pantalla de resultados" width="180"/>
+  <img src="Screenshots/empate.png" alt="Pantalla de empate" width="180"/>
 </p>
 
 ## 🔍 Estructura del proyecto (MVVM)
